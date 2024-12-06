@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:parking_admin/providers/auth_provider.dart';
+import 'package:parking_user/providers/auth_state.dart';
 import 'package:provider/provider.dart';
 
 class LoginView extends StatelessWidget {

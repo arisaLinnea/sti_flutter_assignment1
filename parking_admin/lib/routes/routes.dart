@@ -15,5 +15,7 @@ class Routes {
       RouteInfo(name: 'editParkinglot', path: '/edit/:lotId');
   static const RouteInfo parkingRoute =
       RouteInfo(name: 'parking', path: '/parking');
+  static const RouteInfo profileRoute =
+      RouteInfo(name: 'profile', path: '/profile');
   static const RouteInfo loginRoute = RouteInfo(name: 'login', path: '/login');
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:parking_admin/auth/auth_provider.dart';
+import 'package:parking_admin/providers/auth_provider.dart';
 import 'package:parking_admin/layout/parking_admin_layout.dart';
 import 'package:parking_admin/routes/routes.dart';
 import 'package:parking_admin/screens/edit_parking_lot_view.dart';
@@ -15,12 +15,13 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
 final router = GoRouter(
   redirect: (BuildContext context, GoRouterState state) {
-    final authStatus = context.watch<AuthState>().status;
-    if (authStatus != AuthStatus.authenticated) {
-      return '/login';
-    } else {
-      return null; // return "null" to display the intended route without redirecting
-    }
+    // final authStatus = context.watch<AuthState>().status;
+    // final authStatus = Provider.of<AuthState>(context, listen: false).status;
+    // if (authStatus != AuthStatus.authenticated) {
+    //   return '/login';
+    // } else {
+    return null; // return "null" to display the intended route without redirecting
+    // }
   },
   errorBuilder: (context, state) => PageDoesNotExistView(error: state.error),
   navigatorKey: _rootNavigatorKey,
@@ -36,14 +37,6 @@ final router = GoRouter(
               GoRoute(
                 path: Routes.homeRoute.path,
                 builder: (context, state) => const HomeView(),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: Routes.loginRoute.path,
-                builder: (context, state) => const LoginView(),
               ),
             ],
           ),
@@ -71,16 +64,15 @@ final router = GoRouter(
               GoRoute(
                 path: Routes.parkingRoute.path,
                 builder: (context, state) => const ParkingView(),
-                routes: const <RouteBase>[
-                  // Add child routes
-                  // GoRoute(
-                  //   path: Routes.detailsRoute
-                  //       .path, // NOTE: Don't need to specify "/" character for router’s parents
-                  //   builder: (context, state) {
-                  //     return const EditParkingPage(data: '');
-                  //   },
-                  // ),
-                ],
+                routes: const <RouteBase>[],
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.loginRoute.path,
+                builder: (context, state) => const LoginView(),
               ),
             ],
           ),
