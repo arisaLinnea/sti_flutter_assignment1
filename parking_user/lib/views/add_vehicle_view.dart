@@ -79,7 +79,6 @@ class AddVehicleView extends StatelessWidget {
                       child: FilledButton(
                         onPressed: () async {
                           if (formKey.currentState!.validate()) {
-                            // context.read<AuthState>().setUser(youruserinfo);
                             formKey.currentState!.save();
 
                             Vehicle newVehicle = Vehicle(

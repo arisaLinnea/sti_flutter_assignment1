@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:parking_user/providers/vehicle_provider.dart';
 import 'package:parking_user/utils/utils.dart';
 import 'package:provider/provider.dart';

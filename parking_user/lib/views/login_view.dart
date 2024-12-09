@@ -98,7 +98,6 @@ class LoginView extends StatelessWidget {
                     : FilledButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
-                            // context.read<AuthState>().setUser(youruserinfo);
                             formKey.currentState!.save();
                             context.read<AuthState>().login(
                                 email: userName?.trim(),
@@ -179,7 +178,13 @@ class LoginView extends StatelessWidget {
                               decoration: const InputDecoration(
                                 labelText: 'Name',
                                 prefixIcon: Icon(Icons.account_circle),
-                              )),
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please fill in a name';
+                                }
+                                return null;
+                              }),
                           const SizedBox(height: 24),
                           TextFormField(
                             onSaved: (newValue) => ssn = newValue,
@@ -197,14 +202,22 @@ class LoginView extends StatelessWidget {
                               decoration: const InputDecoration(
                                 labelText: 'Email / Username',
                                 prefixIcon: Icon(Icons.person),
-                              )),
+                              ),
+                              validator: (value) =>
+                                  value?.isValidEmail() ?? true
+                                      ? null
+                                      : 'Please fill in a valid email address'),
                           const SizedBox(height: 24),
                           TextFormField(
                               onSaved: (newValue) => pwd = newValue,
                               decoration: const InputDecoration(
                                 labelText: 'Password',
                                 prefixIcon: Icon(Icons.lock),
-                              )),
+                              ),
+                              validator: (value) =>
+                                  value?.isValidPassword() ?? true
+                                      ? null
+                                      : 'Please fill in a password'),
                           const SizedBox(height: 24),
                           SizedBox(
                             width: double.infinity,

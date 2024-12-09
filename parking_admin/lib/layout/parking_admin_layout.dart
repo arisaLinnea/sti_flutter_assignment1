@@ -62,12 +62,3 @@ class ParkingAdminLayout extends StatelessWidget {
     );
   }
 }
-
-// ShellRoute(
-//  builder: (_, GoRouterState state, child) {
-//    return Scaffold(
-//   body: Column(children:[Row(
-//     children: <Widget>[
-//       NavigationRail(....)]),
-//   child,]));
-// });

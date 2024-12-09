@@ -29,14 +29,7 @@ class FindMeASpot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // debugShowCheckedModeBanner: false,
-      // title: 'Find Me A Spot Admin',
-      // theme: ThemeData(
-      //   useMaterial3: true,
-      //   colorSchemeSeed: Colors.indigo,
-      //   appBarTheme: const AppBarTheme(color: Colors.blue),
-      //   hintColor: Colors.blueAccent,
-      // ),
+      debugShowCheckedModeBanner: false,
       theme: lightTheme,
       home: const AuthViewSwitcher(),
     );
@@ -45,7 +38,6 @@ class FindMeASpot extends StatelessWidget {
 
 class AuthViewSwitcher extends StatelessWidget {
   const AuthViewSwitcher({super.key});
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     final authStatus = context.watch<AuthState>().status;

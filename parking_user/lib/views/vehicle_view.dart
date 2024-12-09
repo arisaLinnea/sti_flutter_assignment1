@@ -14,8 +14,6 @@ class VehicleView extends StatefulWidget {
 }
 
 class _VehicleViewState extends State<VehicleView> {
-  // Future<List<Vehicle>> getList = VehicleRepository().getList();
-
   @override
   void initState() {
     super.initState();

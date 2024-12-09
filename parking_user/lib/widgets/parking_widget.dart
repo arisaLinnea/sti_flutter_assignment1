@@ -68,34 +68,6 @@ class ParkingWidget extends StatelessWidget {
                   return const SizedBox.shrink();
                 },
               ),
-              //   Row(
-              //   mainAxisAlignment: MainAxisAlignment.end,
-              //   children: <Widget>[
-              //     TextButton(
-              //       child: const Text('Remove'),
-              //       onPressed: () async {
-              //         bool success =
-              //             await VehicleRepository().remove(id: item.id);
-              //         if (success) {
-              //           Fluttertoast.showToast(
-              //               msg: 'Vehicle removed',
-              //               toastLength: Toast.LENGTH_SHORT,
-              //               gravity: ToastGravity.CENTER,
-              //               timeInSecForIosWeb: 1);
-              //         } else {
-              //           Fluttertoast.showToast(
-              //               msg: 'Failed to remove vehicle',
-              //               toastLength: Toast.LENGTH_SHORT,
-              //               gravity: ToastGravity.CENTER,
-              //               timeInSecForIosWeb: 1);
-              //         }
-              //         if (context.mounted) {
-              //           context.read<VehicleListProvider>().updateVehicleList();
-              //         }
-              //       },
-              //     ),
-              //   ],
-              // )
             ]),
       ),
     );

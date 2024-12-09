@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:parking_admin/providers/parking_provider.dart';
-import 'package:parking_admin/widgets/parking_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:shared/shared.dart';
 
@@ -75,18 +74,6 @@ class _ParkingStatViewState extends State<ParkingStatView> {
                   ),
                 ),
               );
-              //return Text('SUM: $data');
-              // return SliverList(
-              //   delegate: SliverChildBuilderDelegate(
-              //     (context, index) {
-              //       return ParkingWidget(
-              //           item: activeParkings[index],
-              //           number: index + 1,
-              //           isActive: true);
-              //     },
-              //     childCount: activeParkings.length,
-              //   ),
-              // );
             },
           ),
         ]));

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:parking_admin/widgets/parking_lot_widget.dart';
+import 'package:intl/intl.dart' as intl;
 import 'package:shared/shared.dart';
 import 'package:shared_client/shared_client.dart';
-import 'package:intl/intl.dart' as intl;
 
 class EditParkingLotView extends StatefulWidget {
   final String lotId;
@@ -27,8 +26,6 @@ class _ParkingLotViewState extends State<EditParkingLotView> {
     super.initState();
     parkingLot = ParkingLotRepository().getElementById(id: widget.lotId);
   }
-
-  // Future<ParkingLot> parkingLot = ParkingLotRepository().getElementById(id: parkingLotID);
 
   @override
   Widget build(BuildContext context) {
