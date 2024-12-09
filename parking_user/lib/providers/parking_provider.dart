@@ -59,8 +59,12 @@ class ParkingProvider extends ChangeNotifier {
   }
 
   List<ParkingLot> getFreeParkingLots() {
+    List<Parking> activeParkings = _allParkings
+        .where((lot) =>
+            (lot.endTime == null || lot.endTime!.isAfter(DateTime.now())))
+        .toList();
     List<ParkingLot> freeLots = _parkingsLots.where((lot) {
-      return !_allParkings.any((parking) => parking.parkinglot?.id == lot.id);
+      return !activeParkings.any((parking) => parking.parkinglot?.id == lot.id);
     }).toList();
     return freeLots;
   }
