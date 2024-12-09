@@ -37,9 +37,10 @@ Future<Response> addItemHandler(Request request, Repository repo) async {
     final data = await request.readAsString();
     final json = jsonDecode(data);
 
-    bool success = await repo.addToList(json: json);
-    if (success) {
-      return Response.ok(null);
+    String? newId = await repo.addToList(json: json);
+    if (newId != null) {
+      return Response.ok(jsonEncode(newId),
+          headers: {'Content-Type': 'application/json'});
     } else {
       return Response.internalServerError(
           body:

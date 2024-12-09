@@ -28,6 +28,15 @@ class Address {
   String toString() {
     return '$street, $zipCode $city';
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is ParkingLot && other.id == id;
+  }
+
+  @override
+  int get hashCode => id.hashCode;
 }
 
 class ParkingLot {

@@ -22,22 +22,22 @@ abstract class Repository<T> {
     // }
   }
 
-  Future<bool> addToList({required T item}) async {
+  Future<String?> addToList({required T item}) async {
     Uri updatedUri = uri.replace(path: '/api/$_path');
     try {
       final response = await http.post(updatedUri,
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode(serialize(item)));
       if (response.statusCode == 200) {
-        return true;
+        return jsonDecode(response.body);
       } else {
         var body = jsonDecode(response.body);
         // printError('${body['message']}');
-        return false;
+        return null;
       }
     } catch (e) {
       handleError(e);
-      return false;
+      return null;
     }
   }
 

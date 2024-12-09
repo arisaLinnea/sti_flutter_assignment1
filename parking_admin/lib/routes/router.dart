@@ -1,27 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:parking_admin/providers/auth_provider.dart';
 import 'package:parking_admin/layout/parking_admin_layout.dart';
 import 'package:parking_admin/routes/routes.dart';
-import 'package:parking_admin/screens/edit_parking_lot_view.dart';
-import 'package:parking_admin/screens/home_view.dart';
-import 'package:parking_admin/screens/login_view.dart';
-import 'package:parking_admin/screens/not_exist_view.dart';
-import 'package:parking_admin/screens/parking_lot_view.dart';
-import 'package:parking_admin/screens/parking_view.dart';
-import 'package:provider/provider.dart';
+import 'package:parking_admin/views/add_parking_lot_view.dart';
+import 'package:parking_admin/views/edit_parking_lot_view.dart';
+import 'package:parking_admin/views/home_view.dart';
+import 'package:parking_admin/views/login_view.dart';
+import 'package:parking_admin/views/not_exist_view.dart';
+import 'package:parking_admin/views/parking_lot_view.dart';
+import 'package:parking_admin/views/parking_stat_view.dart';
+import 'package:parking_admin/views/parking_view.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
 final router = GoRouter(
   redirect: (BuildContext context, GoRouterState state) {
-    // final authStatus = context.watch<AuthState>().status;
-    // final authStatus = Provider.of<AuthState>(context, listen: false).status;
-    // if (authStatus != AuthStatus.authenticated) {
-    //   return '/login';
-    // } else {
     return null; // return "null" to display the intended route without redirecting
-    // }
   },
   errorBuilder: (context, state) => PageDoesNotExistView(error: state.error),
   navigatorKey: _rootNavigatorKey,
@@ -48,11 +42,16 @@ final router = GoRouter(
                 routes: <RouteBase>[
                   // Add child routes
                   GoRoute(
-                    path: Routes.editParkingLotRoute
-                        .path, // NOTE: Don't need to specify "/" character for router’s parents
+                    path: Routes.editParkingLotRoute.path,
                     builder: (context, state) {
                       final id = state.pathParameters["lotId"]!;
                       return EditParkingLotView(lotId: id);
+                    },
+                  ),
+                  GoRoute(
+                    path: Routes.addParkingLotRoute.path,
+                    builder: (context, state) {
+                      return const AddParkingLotView();
                     },
                   ),
                 ],
@@ -65,6 +64,14 @@ final router = GoRouter(
                 path: Routes.parkingRoute.path,
                 builder: (context, state) => const ParkingView(),
                 routes: const <RouteBase>[],
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.statRoute.path,
+                builder: (context, state) => const ParkingStatView(),
               ),
             ],
           ),

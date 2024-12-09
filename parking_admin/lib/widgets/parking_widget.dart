@@ -25,15 +25,16 @@ class ParkingWidget extends StatelessWidget {
           Text('Owner: ${item.vehicle?.owner?.name}'),
           Text('Start time: ${item.startTime.parkingFormat()}'),
           Text('End time: ${item.endTime?.parkingFormat() ?? 'Ongoing'}'),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              TextButton(
-                child: const Text('Edit'),
-                onPressed: () {},
-              ),
-            ],
-          )
+          // TODO Add later
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.end,
+          //   children: <Widget>[
+          //     TextButton(
+          //       child: const Text('Edit'),
+          //       onPressed: () {},
+          //     ),
+          //   ],
+          // )
         ]),
       ),
     );

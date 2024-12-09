@@ -53,7 +53,7 @@ void main() {
     test('add to list -  should return 200 on success', () async {
       when(mockOwnerRepo.itemAsString()).thenAnswer((_) => 'owner');
       when(mockOwnerRepo.addToList(json: anyNamed('json')))
-          .thenAnswer((_) async => true);
+          .thenAnswer((_) async => '1');
 
       mockRequest = Request('POST', Uri.parse('$host/api/owner'),
           body: jsonEncode(owner.toJson()));

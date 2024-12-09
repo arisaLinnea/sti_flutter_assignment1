@@ -15,7 +15,7 @@ class ParkingLotRepository extends Repository<ParkingLot> {
   factory ParkingLotRepository() => _instance;
 
   @override
-  Future<bool> addToList({required dynamic json}) async {
+  Future<String?> addToList({required dynamic json}) async {
     try {
       ParkingLot parkinglot = deserialize(json);
       File file = File(super.filePath);
@@ -26,13 +26,14 @@ class ParkingLotRepository extends Repository<ParkingLot> {
         throw StateError('Server list or map is null');
       }
       final int initialLength = serverList.length;
-      serverList.add(ParkingLotFactory.toServerJson(parkinglot));
+      Map<String, dynamic> newlot = ParkingLotFactory.toServerJson(parkinglot);
+      serverList.add(newlot);
       if (serverList.length == initialLength) {
-        return false;
+        return null;
       }
       jsonmap[_storageName] = serverList;
       await file.writeAsString(jsonEncode(jsonmap));
-      return true;
+      return newlot['id'];
     } catch (e) {
       rethrow;
     }

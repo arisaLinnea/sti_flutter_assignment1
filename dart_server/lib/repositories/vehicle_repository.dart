@@ -14,7 +14,7 @@ class VehicleRepository extends Repository<Vehicle> {
   factory VehicleRepository() => _instance;
 
   @override
-  Future<bool> addToList({required dynamic json}) async {
+  Future<String?> addToList({required dynamic json}) async {
     try {
       Vehicle vehicle = deserialize(json);
       File file = File(super.filePath);
@@ -26,15 +26,16 @@ class VehicleRepository extends Repository<Vehicle> {
       }
 
       final int initialLength = serverList.length;
-      serverList.add(VehicleFactory.toServerJson(vehicle));
+      Map<String, dynamic> newVehicle = VehicleFactory.toServerJson(vehicle);
+      serverList.add(newVehicle);
 
       if (serverList.length == initialLength) {
-        return false;
+        return null;
       }
 
       jsonmap[_storageName] = serverList;
       await file.writeAsString(jsonEncode(jsonmap));
-      return true;
+      return newVehicle['id'];
     } catch (e) {
       rethrow;
     }

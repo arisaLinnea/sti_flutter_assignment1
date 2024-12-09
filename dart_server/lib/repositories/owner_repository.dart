@@ -15,7 +15,7 @@ class OwnerRepository extends Repository<Owner> {
   factory OwnerRepository() => _instance;
 
   @override
-  Future<bool> addToList({required dynamic json}) async {
+  Future<String?> addToList({required dynamic json}) async {
     try {
       Owner owner = deserialize(json);
       File file = File(super.filePath);
@@ -28,15 +28,16 @@ class OwnerRepository extends Repository<Owner> {
       }
 
       final int initialLength = serverList.length;
-      serverList.add(OwnerFactory.toServerJson(owner));
+      Map<String, dynamic> newOwner = OwnerFactory.toServerJson(owner);
+      serverList.add(newOwner);
 
       if (serverList.length == initialLength) {
-        return false;
+        return null;
       }
 
       jsonmap[_storageName] = serverList;
       await file.writeAsString(jsonEncode(jsonmap));
-      return true;
+      return newOwner['id'];
     } catch (e) {
       rethrow;
     }

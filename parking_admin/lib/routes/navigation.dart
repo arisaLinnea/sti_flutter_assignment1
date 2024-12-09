@@ -9,13 +9,18 @@ const List<NavigationRailDestination> destinations =
     label: Text('Home'),
   ),
   NavigationRailDestination(
-    icon: Icon(Icons.bookmark_border),
-    selectedIcon: Icon(Icons.book),
+    icon: FaIcon(FontAwesomeIcons.squareParking),
+    selectedIcon: FaIcon(FontAwesomeIcons.squareParking, color: Colors.white),
     label: Text('Parking Lots'),
   ),
   NavigationRailDestination(
     icon: FaIcon(FontAwesomeIcons.car),
-    selectedIcon: Icon(Icons.book),
+    selectedIcon: FaIcon(FontAwesomeIcons.car, color: Colors.white),
     label: Text('Parkings'),
+  ),
+  NavigationRailDestination(
+    icon: FaIcon(FontAwesomeIcons.chartSimple),
+    selectedIcon: FaIcon(FontAwesomeIcons.chartSimple, color: Colors.white),
+    label: Text('Statistics'),
   ),
 ];

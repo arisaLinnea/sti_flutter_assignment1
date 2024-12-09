@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
-abstract class Repository<T> {
-  final String _filePath = 'db/fileStorage.json';
+import 'package:dart_server/repositories/file_repository.dart';
 
+abstract class Repository<T> with FileRepository {
   Repository() {
-    File file = File(_filePath);
+    File file = File(filePath);
     if (!file.existsSync()) {
       print('Create storage file');
       file.createSync(
@@ -13,33 +13,7 @@ abstract class Repository<T> {
     }
   }
 
-  String get filePath => _filePath;
-
-  Future<Map<String, dynamic>> getServerList(
-      {required File file, required String name}) async {
-    String fileContentAsJson = await file.readAsString();
-    Map<String, dynamic> jsonmap = {};
-    if (fileContentAsJson.isNotEmpty) {
-      try {
-        jsonmap = jsonDecode(fileContentAsJson);
-      } catch (e) {
-        throw FormatException('');
-      }
-    }
-
-    List<dynamic> jsonList = [];
-
-    if (jsonmap.containsKey(name)) {
-      jsonList = (jsonmap[name] as List);
-    }
-
-    return {
-      'list': jsonList,
-      'map': jsonmap,
-    };
-  }
-
-  Future<bool> addToList({required dynamic json});
+  Future<String?> addToList({required dynamic json});
 
   Future<T?> getElementById({required String id});
 

@@ -9,7 +9,7 @@ class ParkingFactory {
         id: json['id'],
         startTime: DateTime.parse(json['startTime']),
         endTime:
-            json['endTime'] != null ? DateTime.parse(json['startTime']) : null,
+            json['endTime'] != null ? DateTime.parse(json['endTime']) : null,
         vehicle:
             await VehicleRepository().getElementById(id: json['vehicleId']),
         parkinglot: await ParkingLotRepository()

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 final List<Widget> navbar = [
   const NavigationDestination(
@@ -6,11 +7,11 @@ final List<Widget> navbar = [
       selectedIcon: Icon(Icons.home, color: Colors.white),
       label: 'Home'),
   const NavigationDestination(
-      icon: Icon(Icons.car_rental),
-      selectedIcon: Icon(Icons.car_rental, color: Colors.white),
+      icon: FaIcon(FontAwesomeIcons.car),
+      selectedIcon: FaIcon(FontAwesomeIcons.car, color: Colors.white),
       label: 'Vehicle'),
   const NavigationDestination(
-      icon: Icon(Icons.person_2),
-      selectedIcon: Icon(Icons.person_2, color: Colors.white),
-      label: 'Profile')
+      icon: FaIcon(FontAwesomeIcons.squareParking),
+      selectedIcon: FaIcon(FontAwesomeIcons.squareParking, color: Colors.white),
+      label: 'Parkings')
 ];

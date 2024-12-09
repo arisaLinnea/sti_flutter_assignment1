@@ -1,30 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:parking_admin/providers/auth_provider.dart';
+import 'package:parking_admin/providers/parking_provider.dart';
 import 'package:parking_admin/providers/theme_provider.dart';
-import 'package:parking_admin/screens/login_view.dart';
-import 'package:provider/provider.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:parking_admin/routes/router.dart';
-import 'package:parking_admin/screens/home_view.dart';
-import 'package:parking_admin/screens/not_exist_view.dart';
-import 'package:parking_admin/screens/parking_lot_view.dart';
-import 'package:parking_admin/screens/parking_view.dart';
 import 'package:parking_admin/style/theme.dart';
-
-// void main() {
-//   runApp(
-//     ChangeNotifierProvider(
-//       create: (_) => AuthState(),
-//       child: const FindMeASpotAdmin(),
-//     ),
-//   );
-// }
+import 'package:parking_admin/views/login_view.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => AuthState()),
-      ChangeNotifierProvider(create: (_) => ThemeNotifier())
+      ChangeNotifierProvider(create: (_) => ThemeNotifier()),
+      ChangeNotifierProvider(create: (_) => ParkingProvider())
     ],
     child: const FindMeASpotAdmin(),
   ));
@@ -36,14 +24,6 @@ class FindMeASpotAdmin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      // debugShowCheckedModeBanner: false,
-      // title: 'Find Me A Spot Admin',
-      // theme: ThemeData(
-      //   useMaterial3: true,
-      //   colorSchemeSeed: Colors.indigo,
-      //   appBarTheme: const AppBarTheme(color: Colors.blue),
-      //   hintColor: Colors.blueAccent,
-      // ),
       home: AuthViewSwitcher(),
     );
   }
@@ -105,12 +85,5 @@ class _NavRailViewState extends State<NavRailView> {
         );
       },
     );
-    // Widget build(BuildContext context) => MaterialApp.router(
-    //     routerConfig: router,
-    //     debugShowCheckedModeBanner: false,
-    //     title: 'Find Me A Spot Admin',
-    //     theme: lightTheme,
-    //     darkTheme: darkTheme,
-    //     themeMode: ThemeMode.system);
   }
 }

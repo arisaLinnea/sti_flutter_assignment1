@@ -54,14 +54,14 @@ class MockOwnerRepository extends _i1.Mock implements _i3.OwnerRepository {
       ) as String);
 
   @override
-  _i5.Future<bool> addToList({required dynamic json}) => (super.noSuchMethod(
+  _i5.Future<String?> addToList({required dynamic json}) => (super.noSuchMethod(
         Invocation.method(
           #addToList,
           [],
           {#json: json},
         ),
-        returnValue: _i5.Future<bool>.value(false),
-      ) as _i5.Future<bool>);
+        returnValue: _i5.Future<String?>.value('1'),
+      ) as _i5.Future<String?>);
 
   @override
   _i5.Future<_i2.Owner?> getElementById({required String? id}) =>

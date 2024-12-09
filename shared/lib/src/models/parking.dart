@@ -31,7 +31,7 @@ class Parking {
             : null,
         startTime: DateTime.parse(json['startTime']),
         endTime:
-            json['endTime'] != null ? DateTime.parse(json['startTime']) : null);
+            json['endTime'] != null ? DateTime.parse(json['endTime']) : null);
   }
 
   Map<String, dynamic> toJson() => {
@@ -40,7 +40,7 @@ class Parking {
         'parkinglot': parkinglot?.toJson(),
         'startTime':
             startTime.toIso8601String(), // Convert DateTime to ISO 8601 string,
-        'endTime': endTime == null ? null : startTime.toIso8601String()
+        'endTime': endTime?.toIso8601String()
       };
 
   @override

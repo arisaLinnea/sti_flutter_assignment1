@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:parking_user/providers/auth_state.dart';
+import 'package:parking_user/providers/parking_provider.dart';
 import 'package:parking_user/providers/theme_provider.dart';
+import 'package:parking_user/providers/vehicle_provider.dart';
 import 'package:parking_user/routes/router.dart';
 import 'package:parking_user/style/theme.dart';
 import 'package:parking_user/views/login_view.dart';
@@ -14,7 +16,9 @@ void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => AuthState()),
-      ChangeNotifierProvider(create: (_) => ThemeNotifier())
+      ChangeNotifierProvider(create: (_) => ThemeNotifier()),
+      ChangeNotifierProvider(create: (_) => VehicleListProvider()),
+      ChangeNotifierProvider(create: (_) => ParkingProvider())
     ],
     child: const FindMeASpot(),
   ));
@@ -24,7 +28,7 @@ class FindMeASpot extends StatelessWidget {
   const FindMeASpot({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       // debugShowCheckedModeBanner: false,
       // title: 'Find Me A Spot Admin',
       // theme: ThemeData(
@@ -33,7 +37,8 @@ class FindMeASpot extends StatelessWidget {
       //   appBarTheme: const AppBarTheme(color: Colors.blue),
       //   hintColor: Colors.blueAccent,
       // ),
-      home: AuthViewSwitcher(),
+      theme: lightTheme,
+      home: const AuthViewSwitcher(),
     );
   }
 }
@@ -68,30 +73,6 @@ class AuthViewSwitcher extends StatelessWidget {
       ),
     );
   }
-  // => MaterialApp.router(
-  // routerConfig: router,
-  // debugShowCheckedModeBanner: false,
-  // title: 'Find Me A Spot',
-  // theme: lightTheme,
-  // darkTheme: darkTheme,
-  // themeMode: ThemeMode.system);
-
-  // Widget build(BuildContext context) {
-  //   return MaterialApp(
-  //     title: 'Find Me A Spot',
-  //     theme: lightTheme,
-  //     darkTheme: darkTheme,
-  //     themeMode: ThemeMode.system,
-  //     // theme: ThemeData(
-  //     //   colorScheme: colorScheme,
-  //     //   useMaterial3: true,
-  //     // ),
-  //     debugShowCheckedModeBanner: false,
-  //     home: const HomePage(title: 'Flutter Demo Home Page'),
-  //     onGenerateRoute: ParkingRouter.generateRoute,
-  //     initialRoute: homeRoute,
-  //   );
-  // }
 }
 
 class UserView extends StatefulWidget {
@@ -118,19 +99,5 @@ class _UserViewState extends State<UserView> {
         );
       },
     );
-    // routerConfig: router,
-    // debugShowCheckedModeBanner: false,
-    // title: 'Find Me A Spot',
-    // theme: lightTheme,
-    // darkTheme: darkTheme,
-    // themeMode: ThemeMode.system);
-
-    // Widget build(BuildContext context) => MaterialApp.router(
-    //     routerConfig: router,
-    //     debugShowCheckedModeBanner: false,
-    //     title: 'Find Me A Spot Admin',
-    //     theme: lightTheme,
-    //     darkTheme: darkTheme,
-    //     themeMode: ThemeMode.system);
   }
 }

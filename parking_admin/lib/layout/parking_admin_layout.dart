@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:parking_admin/providers/auth_provider.dart';
 import 'package:parking_admin/providers/theme_provider.dart';
 import 'package:parking_admin/routes/navigation.dart';
-import 'package:parking_admin/screens/home_view.dart';
-import 'package:parking_admin/screens/not_exist_view.dart';
-import 'package:parking_admin/screens/parking_lot_view.dart';
-import 'package:parking_admin/screens/parking_view.dart';
+import 'package:parking_admin/views/home_view.dart';
 import 'package:provider/provider.dart';
 
 class ParkingAdminLayout extends StatelessWidget {
