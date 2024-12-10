@@ -13,6 +13,14 @@ Third assignment on my Dart/Flutter course at STI
 
 ## 1.2 Features
 
+- Login (possibility to toggle visible or invisible password) and logout. (No validation on login)
+- Change between dark and light mode
+- See list of all parkinglots, with possibility to remove and add new ones
+- See active parkings
+- See ended parkings
+- Show most popular parking lot (A list if it's a tie)
+- Show total cost of ended parkings
+
 # 2. User app
 
 ## 2.1 Start
@@ -24,16 +32,19 @@ Third assignment on my Dart/Flutter course at STI
 
 ## 2.2 Features
 
-- Login (possibility to toggle visible or invisible password) and logout.
-- Register new account / create new owner
+- Login (possibility to toggle visible or invisible password) and logout. (Checks login credentials with server)
+- Register new account / create new owner (however see limits)
 - Change between dark and light mode
 - See the logged in users vehicle (filtered away on client side)
 - Add and remove vehicles
+- See list with free parkinglots and start a new parking
+- See list with active parkings
+- See list with ended parkings
 
 # 3. Limits
 
 - There are no checks that username doesn't already exist when creating a new useraccount/owner.
-- No validation on admin login. (You can write whatever you want)
+- No validation on admin login. (User can write whatever he/she wants)
 - No tests
 - Filters and calculations on client side
 - Not the best responsive design
